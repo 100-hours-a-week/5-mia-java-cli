@@ -1,17 +1,17 @@
 package kcs.spiderman;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
-    private static PeterParker peterParker = new PeterParker();
-    private static MilesMorales milesMorales = new MilesMorales();
-    private static GhostSpider ghostSpider = new GhostSpider();
-    private static Spiderman2099 spiderman2099 = new Spiderman2099();
-    private static ScarletSpider scarletSpider = new ScarletSpider();
-    private static AmazingSpiderman amazingSpiderman = new AmazingSpiderman();
-    private static MCUspiderman mcuSpiderman = new MCUspiderman();
+    private static Spiderman[] spiderPeople = {
+            new PeterParker(),
+            new MilesMorales(),
+            new GhostSpider(),
+            new Spiderman2099(),
+            new ScarletSpider(),
+            new AmazingSpiderman(),
+            new MCUspiderman()
+    };
 
     public static void printWelcome() {
         System.out.println("┌-----------------------------------┐");
@@ -51,53 +51,29 @@ public class Menu {
         System.out.println("----------------------------------");
     }
 
-    public static void printInvalidOption() {
-        System.out.println("Invalid option. Please try again.");
-    }
-
-
-    /* 메소드를 만들어봅시다 */
-    public static void introducePeople() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("----------------------------------\n");
-        System.out.println("Meet the Spiderpeople!");
+    private static Spiderman chooseSpiderman(Scanner scanner) {
         System.out.println("Which Spider-whatever, do you want?\n");
-        System.out.println("1. Peter Parker");
-        System.out.println("2. Miles Morales");
-        System.out.println("3. Ghost Spider");
-        System.out.println("4. Spiderman 2099");
-        System.out.println("5. Scarlet Spider");
-        System.out.println("6. Amazing Spiderman");
-        System.out.println("7. MCU Spiderman\n");
+        for (int i = 0; i < spiderPeople.length; i++) {
+            System.out.println((i + 1) + ". " + spiderPeople[i].name);
+        }
         System.out.println("Enter your pick (Just Number)");
         System.out.println("----------------------------------");
         System.out.print("User: ");
         int choice = scanner.nextInt();
 
-        switch (choice) {
-            case 1:
-                displayDetails(peterParker);
-                break;
-            case 2:
-                displayDetails(milesMorales);
-                break;
-            case 3:
-                displayDetails(ghostSpider);
-                break;
-            case 4:
-                displayDetails(spiderman2099);
-                break;
-            case 5:
-                displayDetails(scarletSpider);
-                break;
-            case 6:
-                displayDetails(amazingSpiderman);
-                break;
-            case 7:
-                displayDetails(mcuSpiderman);
-                break;
-            default:
-                System.out.println("Invalid option. Please try again.");
+        if (choice >= 1 && choice <= spiderPeople.length) {
+            return spiderPeople[choice - 1];
+        } else {
+            System.out.println("Invalid option. Please try again.");
+            return null;
+        }
+    }
+
+    public static void introducePeople(Scanner scanner) {
+        System.out.println("----------------------------------\n");
+        Spiderman chosenSpiderman = chooseSpiderman(scanner);
+        if (chosenSpiderman != null) {
+            displayDetails(chosenSpiderman);
         }
     }
 
@@ -112,145 +88,72 @@ public class Menu {
         System.out.println();
     }
 
-    public static void showSpiderPowers() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("----------------------------------\n");
-        System.out.println("Wanna see what spiders can do?");
-        System.out.println("Pick one spider, just type number.\n");
-        System.out.println("1. Peter Parker");
-        System.out.println("2. Miles Morales");
-        System.out.println("3. Ghost Spider");
-        System.out.println("4. Spiderman 2099");
-        System.out.println("5. Scarlet Spider");
-        System.out.println("6. Amazing Spiderman");
-        System.out.println("7. MCU Spiderman\n");
-        System.out.println("----------------------------------");
-        System.out.print("User: ");
-        int choice = scanner.nextInt();
-
-        switch (choice) {
-            case 1:
-                peterParker.showPowers();
-                break;
-            case 2:
-                milesMorales.showPowers();
-                break;
-            case 3:
-                ghostSpider.showPowers();
-                break;
-            case 4:
-                spiderman2099.showPowers();
-                break;
-            case 5:
-                scarletSpider.showPowers();
-                break;
-            case 6:
-                amazingSpiderman.showPowers();
-                break;
-            case 7:
-                mcuSpiderman.showPowers();
-                break;
-            default:
-                System.out.println("Invalid option. Please try again.");
+    public static void showSpiderPowers(Scanner scanner) {
+        Spiderman chosenSpiderman = chooseSpiderman(scanner);
+        if (chosenSpiderman != null) {
+            chosenSpiderman.showPowers();
         }
     }
 
-    public static void trackVillains() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("----------------------------------\n");
-        System.out.println("Villain Tracker");
-        System.out.println("Pick one spider, just type number.\n");
-        System.out.println("1. Peter Parker");
-        System.out.println("2. Miles Morales");
-        System.out.println("3. Ghost Spider");
-        System.out.println("4. Spiderman 2099");
-        System.out.println("5. Scarlet Spider");
-        System.out.println("6. Amazing Spiderman");
-        System.out.println("7. MCU Spiderman\n");
-        System.out.println("----------------------------------");
-        System.out.print("User: ");
-        int choice = scanner.nextInt();
-
-        switch (choice) {
-            case 1:
-                peterParker.showArchEnemy();
-                break;
-            case 2:
-                milesMorales.showArchEnemy();
-                break;
-            case 3:
-                ghostSpider.showArchEnemy();
-                break;
-            case 4:
-                spiderman2099.showArchEnemy();
-                break;
-            case 5:
-                scarletSpider.showArchEnemy();
-                break;
-            case 6:
-                amazingSpiderman.showArchEnemy();
-                break;
-            case 7:
-                mcuSpiderman.showArchEnemy();
-                break;
-            default:
-                System.out.println("Invalid option. Please try again.");
+    public static void trackVillains(Scanner scanner) {
+        Spiderman chosenSpiderman = chooseSpiderman(scanner);
+        if (chosenSpiderman != null) {
+            chosenSpiderman.showArchEnemy();
         }
     }
 
-    public static void spideyTrivia() {
-        Scanner scanner = new Scanner(System.in);
+    public static void spideyTrivia(Scanner scanner) {
         Random random = new Random();
         boolean continuePlaying = true;
+        Spiderman chosenSpiderman = chooseSpiderman(scanner);
+
+        if (chosenSpiderman == null) return;
 
         System.out.println("----------------------------------\n");
         System.out.println("Welcome to Spider-Trivia!");
-        System.out.println("Which Spider-whatever, do you want to play?\n");
-        System.out.println("1. Peter Parker");
-        System.out.println("2. Miles Morales");
-        System.out.println("3. Ghost Spider");
-        System.out.println("4. Spiderman 2099");
-        System.out.println("5. Scarlet Spider");
-        System.out.println("6. Amazing Spiderman");
-        System.out.println("7. MCU Spiderman\n");
-        System.out.println("Enter your pick (Just Number)");
-        System.out.println("----------------------------------");
-        System.out.print("User: ");
-        int choice = scanner.nextInt();
 
         while (continuePlaying) {
-            switch (choice) {
-                case 1:
-                    peterParker.askQuestion(scanner, random);
-                    break;
-                case 2:
-                    milesMorales.askQuestion(scanner, random);
-                    break;
-                case 3:
-                    ghostSpider.askQuestion(scanner, random);
-                    break;
-                case 4:
-                    spiderman2099.askQuestion(scanner, random);
-                    break;
-                case 5:
-                    scarletSpider.askQuestion(scanner, random);
-                    break;
-                case 6:
-                    amazingSpiderman.askQuestion(scanner, random);
-                    break;
-                case 7:
-                    mcuSpiderman.askQuestion(scanner, random);
-                    break;
-                default:
-                    System.out.println("Invalid option. Please try again.");
-                    return;
-            }
-
+            chosenSpiderman.askQuestion(scanner, random);
             System.out.println("Do you want to try another question? (y/n)");
             System.out.print("User: ");
             String answer = scanner.next();
             if (answer.equalsIgnoreCase("n")) {
                 continuePlaying = false;
+            }
+        }
+    }
+    public static void musicControlMenu(Scanner scanner) {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("----------------------------------\n");
+            System.out.println("Music Control Menu");
+            System.out.println("1. Play Music");
+            System.out.println("2. Pause Music");
+            System.out.println("3. Next Track");
+            System.out.println("4. Current Track");
+            System.out.println("5. Back to Main Menu");
+            System.out.println("----------------------------------");
+            System.out.print("User: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Music resumed.");
+                    break;
+                case 2:
+                    System.out.println("Music paused.");
+                    break;
+                case 3:
+                    System.out.println("Skipping to next track.");
+                    break;
+                case 4:
+                    System.out.println("Displaying current track.");
+                    break;
+                case 5:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
             }
         }
     }

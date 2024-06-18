@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class GhostSpider extends Spiderman {
     String friend = "Peter Parker";
     String suitColor = "white&pink";
-    boolean guilty = true;
 
     public GhostSpider() {
         super("Gwen Stacy", 19, "Earth-65", "2014-09-17", "None", "Kingpin");
@@ -26,12 +25,10 @@ public class GhostSpider extends Spiderman {
         List<String> questions = new ArrayList<>();
         questions.add("Who is Ghost Spider's friend?");
         questions.add("What color is Ghost Spider's suit?");
-        questions.add("Does Ghost Spider feel guilt?");
 
         List<String> answers = new ArrayList<>();
         answers.add(friend);
         answers.add(suitColor);
-        answers.add(String.valueOf(guilty));
 
         int questionIndex = random.nextInt(questions.size());
         System.out.println("----------------------------------\n");

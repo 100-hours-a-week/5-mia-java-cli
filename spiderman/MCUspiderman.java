@@ -7,22 +7,14 @@ import java.util.Scanner;
 public class MCUspiderman extends PeterParker {
     String actor = "Tom Holland";
     String director = "Jon Watts";
-    String address = "Queens, New York";
+    String address = "Queens";
     String team = "Avengers";
     String friend = "Ned";
-    String[] suits = {
-            "조악한 홈메이드 수트", "스타크의 소소한 업그레이드 수트", "빨검 수트",
-            "빨파 수트", "나이트 몽키 수트", "아이언 스파이더", "전선 수트", "직접 만든 수트"
-    };
-    /*
     String[] suits = {
     "Homemade suit", "Stark upgraded suit", "Red-black suit",
     "Red-blue suit", "Night Monkey suit", "Iron Spider", "Integrated suit", "Self-made suit"
     };
-    */
-
-    String[] villains = {"벌처", "미스테리오", "그린 고블린", "일렉트로", "JJJ"};
-    // String[] villains = {"Vulture", "Mysterio", "Green Goblin", "Electro", "JJJ"};
+    String[] villains = {"Vulture", "Mysterio", "Green Goblin", "Electro", "JJJ"};
 
     public MCUspiderman() {
         super();

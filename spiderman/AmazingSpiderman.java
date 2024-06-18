@@ -5,9 +5,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class AmazingSpiderman extends PeterParker {
-    String actor = "앤드류 가필드";
-    String[] villains = {"리자드", "일렉트로", "그린 고블린"};
-    boolean guilty = true;
+    String actor = "Andrew Garfield";
+    String[] villains = {"Lizard", "Electro", "Green Goblin"};
 
     public AmazingSpiderman() {
         super();
@@ -15,7 +14,7 @@ public class AmazingSpiderman extends PeterParker {
         this.age = 27;
         this.earth = "Earth-120703";
         this.birth = "2012-07-03";
-        this.partner = "Gwen Stacy";
+        this.partner = "Gwen";
         this.archEnemy = "Doctor Octopus";
     }
 
@@ -28,12 +27,12 @@ public class AmazingSpiderman extends PeterParker {
         List<String> questions = new ArrayList<>();
         questions.add("Who plays Amazing Spiderman?");
         questions.add("Who are Amazing Spiderman's villains?");
-        questions.add("What is Amazing Spiderman's guilt status?");
+        questions.add("Who are Amazing Spiderman with together?");
 
         List<String> answers = new ArrayList<>();
         answers.add(actor);
         answers.add(String.join(", ", villains));
-        answers.add(String.valueOf(guilty));
+        answers.add(partner);
 
         int questionIndex = random.nextInt(questions.size());
         System.out.println("----------------------------------\n");
